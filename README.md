@@ -28,7 +28,7 @@ Integrate Microsoft Azure Single Sign On and benefit from a secure login experie
 ```
 
 During the configuration, you will be prompted to enter your Client ID, Client Secret, and Tenant ID.  
-If you don't have these credentials, you can obtain them in the [https://portal.azure.com](https://portal.azure.com).  
+If you don't have these credentials, you can obtain them at [https://portal.azure.com](https://portal.azure.com).  
 
 3. Open your admin panel you should see the option to Sign in with Microsoft
 
