@@ -45,7 +45,6 @@ class SessionController extends Controller
     public function handleCallback()
     {
         try {
-
             if (!AzureConfigHelper::isConfigured()) {
                 return view('azure-auth::errors.config');
             }
@@ -58,29 +57,31 @@ class SessionController extends Controller
                 $randomPass = Str::random(80);
 
                 $userData = [
-                        'name' => $user->getName(),
-                        'email' => $user->getEmail(),
-                        'password' => bcrypt($randomPass),
-                        'role_id' => 1,
-                        'status' => true
-                    ];
+                    'name' => $user->getName(),
+                    'email' => $user->getEmail(),
+                    'password' => bcrypt($randomPass),
+                    'role_id' => 1,
+                    'status' => true,
+                ];
 
                 $localUser = $this->adminRepository->create($userData);
 
                 if ($localUser) {
                     Log::info('Local user created for ', ['user_email' => $user->getEmail()]);
-                    
-                    auth()->guard('admin')->login($localUser);
+                } else {
+                    Log::error('Error creating local user');
                 }
             }
 
-            if (!auth()->guard('admin')->user()->status) {
+            if (!$localUser || !$localUser->status) {
                 session()->flash('warning', trans('admin::app.settings.users.activate-warning'));
 
                 auth()->guard('admin')->logout();
 
                 return redirect()->route('admin.session.create');
             }
+
+            auth()->guard('admin')->login($localUser);
 
             Log::info('Azure Authentication Successful', ['user_email' => $user->getEmail()]);
 
@@ -91,5 +92,4 @@ class SessionController extends Controller
             return redirect()->route('admin.session.create')->with('warning', 'Unable to authenticate with your Microsoft account. Please try again.');
         }
     }
-
 }
