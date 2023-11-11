@@ -87,14 +87,4 @@ class SessionController extends Controller
         }
     }
 
-    /**
-     * Show the error view for missing or invalid Azure configuration.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function showConfigError()
-    {
-        return view('azure-auth::errors.config');
-    }
-
 }
