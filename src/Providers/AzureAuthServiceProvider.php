@@ -47,7 +47,7 @@ class AzureAuthServiceProvider extends ServiceProvider
         ], 'public');
 
         $this->publishes([
-            __DIR__.'/../Resources/views/users' => resource_path('admin-themes/default/views'),
+            __DIR__.'/../Resources/views/users' => resource_path('admin-themes/default/views/users'),
         ], 'azure-auth');
     }
 }
