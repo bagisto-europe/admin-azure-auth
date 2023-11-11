@@ -89,7 +89,7 @@ class SessionController extends Controller
         } catch (\Exception $e) {
             Log::error('Azure Authentication Error: ' . $e->getMessage());
 
-            return redirect()->route('admin.session.create')->with('warning', 'Unable to authenticate with your Microsoft account. Please try again.');
+            return redirect()->route('admin.session.create')->with('warning', __('azure-auth::app.auth-error'));
         }
     }
 }
