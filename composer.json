@@ -1,9 +1,9 @@
 {
     "name": "bagisto-eu/azure-auth",
     "type": "library",
-    "description": "Bagisto Azure Authentication Package",
+    "description": "Enable SSO for your Bagisto admin panel with Microsoft Azure",
     "keywords": ["bagisto", "admin", "azure", "authentication", "sso"],
-    "homepage": "https://github.com/bagisto-europe/multisafepay",
+    "homepage": "https://github.com/bagisto-europe/admin-azure-auth",
     "license": "MIT",
     "authors": [
         {
