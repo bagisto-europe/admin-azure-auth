@@ -58,27 +58,27 @@ class SessionController extends Controller
                 $randomPass = Str::random(80);
 
                 $userData = [
-                    'name' => $user->getName(),
-                    'email' => $user->getEmail(),
-                    'password' => bcrypt($randomPass),
-                    'role_id' => 1,
-                    'status' => true
-                ];
-                
-                $adminUser = $this->adminRepository->create($userData);
+                        'name' => $user->getName(),
+                        'email' => $user->getEmail(),
+                        'password' => bcrypt($randomPass),
+                        'role_id' => 1,
+                        'status' => true
+                    ];
 
-                if ($adminUser) {
+                $localUser = $this->adminRepository->create($userData);
+
+                if ($localUser) {
                     Log::info('Local user created for ', ['user_email' => $user->getEmail()]);
+                    
+                    auth()->guard('admin')->login($localUser);
                 }
             }
 
-            auth()->guard('admin')->login($adminUser);
-
-            if (! auth()->guard('admin')->user()->status) {
+            if (!auth()->guard('admin')->user()->status) {
                 session()->flash('warning', trans('admin::app.settings.users.activate-warning'));
-    
+
                 auth()->guard('admin')->logout();
-    
+
                 return redirect()->route('admin.session.create');
             }
 
