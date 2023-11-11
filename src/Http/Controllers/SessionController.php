@@ -83,8 +83,6 @@ class SessionController extends Controller
 
             auth()->guard('admin')->login($localUser);
 
-            Log::info('Azure Authentication Successful', ['user_email' => $user->getEmail()]);
-
             return redirect()->route('admin.dashboard.index');
         } catch (\Exception $e) {
             Log::error('Azure Authentication Error: ' . $e->getMessage());
