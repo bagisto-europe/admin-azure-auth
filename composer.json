@@ -1,0 +1,36 @@
+{
+    "name": "bagisto-eu/azure-auth",
+    "type": "library",
+    "description": "Bagisto Azure Authentication Package",
+    "keywords": ["bagisto", "admin", "azure", "authentication", "sso"],
+    "homepage": "https://github.com/bagisto-europe/multisafepay",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bagisto Europe",
+            "email": "info@bagisto.eu"
+        }
+    ],
+    "require": {
+        "laravel/prompts": "^0.1.13",
+        "laravel/socialite": "^5.10",
+        "socialiteproviders/microsoft-azure": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bagisto\\AzureAuth\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bagisto\\AzureAuth\\Providers\\AzureAuthServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
