@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'name'    => 'Bagisto Azure SSO',
+    'name'    => 'Bagisto Azure Auth',
     'version' => '0.1.0-alpha.1'
 ];
