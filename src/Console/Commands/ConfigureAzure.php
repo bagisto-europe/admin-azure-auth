@@ -18,7 +18,7 @@ class ConfigureAzure extends Command
 
     public function handle()
     {
-        info('Welcome to the Microsoft Azure SSO setup wizard');
+        info('Welcome to the Microsoft Azure SSO configuration wizard');
 
         if ($this->keysExist()) {
             $overwrite = confirm('Azure configuration keys already exist. This wizard will overwrite existing settings. Continue?', false);
@@ -56,7 +56,7 @@ class ConfigureAzure extends Command
             '--force'    => true
         ]);
 
-        info('Azure SSO setup completed successfully.');
+        info('Azure SSO configuration completed successfully.');
     }
 
     protected function keysExist()
