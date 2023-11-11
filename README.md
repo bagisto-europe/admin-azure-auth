@@ -10,18 +10,19 @@
 
 Integrate Microsoft Azure Single Sign On and benefit from a secure login experience in the Bagisto admin panel.
 
-![example](docs/bagisto-signin.png)
-
 ## Installation
 
-1. Install the package using Composer:
+1. Install the package using Composer
 
 ```bash
     composer require bagisto-eu/azure-auth
 ```
 
-2. Run the following command
+2. Run the following command to configure your credentials
 
 ```bash
     php artisan azure:configure
 ```
+3. Open your admin panel you should see the option to Sign in with Microsoft
+
+![example](docs/bagisto-signin.png)

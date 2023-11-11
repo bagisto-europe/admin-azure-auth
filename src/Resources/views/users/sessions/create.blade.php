@@ -94,27 +94,27 @@
                         </button>
                     </div>
 
-                    {{-- Divider --}}
-                    <div class="flex items-center justify-center mt-4 mb-5">
-                        <div class="border-b border-gray-300 dark:border-gray-700 w-full"></div>
-                        <span class="mx-4 text-gray-500 dark:text-gray-400">{{ __('azure-auth::app.or') }}</span>
-                        <div class="border-b border-gray-300 dark:border-gray-700 w-full"></div>
-                    </div>
-                    
-                    {{-- Continue with Microsoft Azure --}}
-                    <div class="flex items-center justify-center">
-                        <a 
-                            href="{{ route('azure.authenticate') }}"
-                            class="inline-flex items-center mt-3 mb-4 px-[14px] py-[6px] bg-white border border-black-400 border-black rounded-[6px] text-gray-500 font-bold cursor-pointer shadow-sm hover:bg-gray-100 transition-all"
-                        >
+                    @if(Route::has('azure.authenticate'))
+                        <div class="flex items-center justify-center mt-4 mb-5">
+                            <div class="border-b border-gray-300 dark:border-gray-700 w-full"></div>
+                            <span class="mx-4 text-gray-500 dark:text-gray-400">{{ __('azure-auth::app.or') }}</span>
+                            <div class="border-b border-gray-300 dark:border-gray-700 w-full"></div>
+                        </div>
+                        
+                        <div class="flex items-center justify-center">
+                            <a 
+                                href="{{ route('azure.authenticate') }}"
+                                class="inline-flex items-center mt-3 mb-4 px-[14px] py-[6px] bg-white border border-black-400 border-black rounded-[6px] text-gray-500 font-bold cursor-pointer shadow-sm hover:bg-gray-100 transition-all"
+                            >
                             <img 
                                 src="{{ asset('vendor/azure-auth/mssymbol.svg') }}"
                                 alt="Microsoft Logo"
                                 class="w-6 h-6 mr-2"
                             >
                             <span>{{ __('azure-auth::app.sign-in') }}</span>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    @endif
                 </x-admin::form>
             </div>
         </div>
