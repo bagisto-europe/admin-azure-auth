@@ -18,7 +18,7 @@ Integrate Microsoft Azure Single Sign On and benefit from a secure login experie
 1. Install the package using Composer
 
 ```bash
-    composer require bagisto-eu/azure-auth
+    composer require bagisto-eu/azure-auth:dev-main
 ```
 
 2. Run the following command to configure your credentials

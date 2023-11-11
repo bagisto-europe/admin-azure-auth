@@ -49,7 +49,7 @@ class SessionController extends Controller
             if (!AzureConfigHelper::isConfigured()) {
                 return view('azure-auth::errors.config');
             }
-            
+
             $user = Socialite::driver('azure')->user();
 
             $localUser = $this->adminRepository->where('email', $user->getEmail())->first();
