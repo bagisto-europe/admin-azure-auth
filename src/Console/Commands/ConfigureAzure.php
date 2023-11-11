@@ -49,12 +49,12 @@ class ConfigureAzure extends Command
 
         $this->updateEnvFile('AZURE_TENANT_ID', $tenantId);
 
-        Artisan::call('optimize', [], $this->getOutput());
+        Artisan::call('optimize');
         
         Artisan::call('vendor:publish', [
             '--provider' => "Bagisto\AzureAuth\Providers\AzureAuthServiceProvider",
             '--force'    => true
-        ], $this->getOutput());
+        ]);
 
         info('Azure SSO setup completed successfully.');
     }
