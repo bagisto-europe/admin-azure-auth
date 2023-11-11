@@ -19,6 +19,11 @@ class AzureAuthServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
 
+        $this->mergeConfigFrom(
+            __DIR__ . '/../Config/services.php',
+            'services'
+        );
+
         $this->commands([
             ConfigureAzure::class,
         ]);
@@ -37,10 +42,6 @@ class AzureAuthServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/../Resources/views', 'azure-auth');
 
-        $this->app->booted(function () {
-            $this->loadConfig();
-        });
-
         $this->publishes([
             __DIR__.'/../Resources/img' => public_path('vendor/azure-auth'),
         ], 'public');
@@ -48,13 +49,5 @@ class AzureAuthServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../Resources/views/users' => resource_path('admin-themes/default/views'),
         ], 'azure-auth');
-    }
-
-    protected function loadConfig()
-    {
-        $this->mergeConfigFrom(
-            __DIR__ . '/../Config/services.php',
-            'services'
-        );
     }
 }

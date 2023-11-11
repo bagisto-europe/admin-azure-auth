@@ -42,6 +42,8 @@ class ConfigureAzure extends Command
 
         $this->updateEnvFile('AZURE_CLIENT_SECRET', $clientSecret);
 
+        $this->updateEnvFile('AZURE_REDIRECT_URL', route('azure.callback'));
+
         $tenantId = text(
             label: 'Please enter your Tenant ID',
             required: true

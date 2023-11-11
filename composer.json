@@ -12,8 +12,8 @@
         }
     ],
     "require": {
-        "laravel/prompts": "^0.1.13",
-        "laravel/socialite": "^5.10",
+        "laravel/prompts": "^0.1.12",
+        "laravel/socialite": "^5.0",
         "socialiteproviders/microsoft-azure": "^5.1"
     },
     "autoload": {
