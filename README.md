@@ -19,7 +19,7 @@ See [Changelog](CHANGELOG.md) for details on what has changed in each version.
 1. Install the package using Composer
 
 ```bash
-    composer require bagisto-eu/azure-auth:dev-main
+    composer require bagisto-eu/azure-auth
 ```
 
 2. Run the following command to configure your credentials
