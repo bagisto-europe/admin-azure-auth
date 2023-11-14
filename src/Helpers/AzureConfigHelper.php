@@ -4,13 +4,13 @@ namespace Bagisto\AzureAuth\Helpers;
 
 class AzureConfigHelper
 {
-    public static function isConfigured(): bool
+    public static function isConfigured()
     {
-        return !empty(
-            config('services.azure.client_id')
-            ?? config('services.azure.client_secret')
-            ?? config('services.azure.redirect')
-            ?? config('services.azure.tenant')
-        );
+        $client_id = config('services.azure.client_id');
+        $client_secret = config('services.azure.client_secret');
+        $redirect = config('services.azure.redirect');
+        $tenant = config('services.azure.tenant');
+
+        return !empty($client_id) && !empty($client_secret) && !empty($redirect) && !empty($tenant);
     }
 }
