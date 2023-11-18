@@ -29,7 +29,7 @@ class ConfigureAzure extends Command
         }
 
         $clientId = text(
-            label: 'Please enter your Client ID',
+            label: 'Please enter your client ID',
             required: true
         );
 
@@ -45,7 +45,7 @@ class ConfigureAzure extends Command
         $this->updateEnvFile('AZURE_REDIRECT_URL', route('azure.callback'));
 
         $tenantId = text(
-            label: 'Please enter your Tenant ID',
+            label: 'Please enter your tenant ID',
             required: true
         );
 
