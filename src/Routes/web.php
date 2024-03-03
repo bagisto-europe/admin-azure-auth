@@ -10,4 +10,5 @@ Route::group(['middleware' => $middleware, 'prefix' => $prefix], function () {
     Route::get('/auth', [SessionController::class, 'redirectToAzure'])->name('azure.authenticate');
 
     Route::get('/callback', [SessionController::class, 'handleCallback'])->name('azure.callback');
+
 });
