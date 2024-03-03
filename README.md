@@ -10,7 +10,6 @@
 </div>
 
 With this package, you can integrate Microsoft Azure Single Sign-On (SSO) into the Bagisto admin panel.  
-When using Microsoft Azure SSO for your Bagisto eCommerce Admin Authentication, you benefit from the following features.
 
 - Users can use a single set of credentials to access various applications, including Bagisto.
 - Utilizes modern security protocols and provides additional security layers, such as multi-factor authentication (MFA).
