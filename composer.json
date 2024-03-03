@@ -2,7 +2,7 @@
     "name": "bagisto-eu/azure-auth",
     "type": "library",
     "description": "Enable SSO for your Bagisto admin panel with Microsoft Azure",
-    "keywords": ["bagisto", "admin", "azure", "authentication", "sso"],
+    "keywords": ["bagisto", "admin", "azure", "authentication", "sso", "microsoft entra"],
     "homepage": "https://github.com/bagisto-europe/admin-azure-auth",
     "license": "MIT",
     "authors": [

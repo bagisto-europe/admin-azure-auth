@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1] - 3-3-2024
+- Updated compatibility with Bagisto version 2.1.1
+
 ## [1.0] - 11-11-2023
 
 ### Added

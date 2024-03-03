@@ -5,33 +5,19 @@
 
 <div align="center">
     <img alt="GitHub version" src="http://poser.pugx.org/bagisto-eu/azure-auth/v">
+    <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/bagisto-eu/azure-auth">
     <img alt="GitHub license" src="https://img.shields.io/github/license/bagisto-europe/admin-azure-auth">
 </div>
 
 With this package, you can integrate Microsoft Azure Single Sign-On (SSO) into the Bagisto admin panel.  
 When using Microsoft Azure SSO for your Bagisto eCommerce Admin Authentication, you benefit from the following features.
 
-1. **Centralized Authentication:**
-   - With Azure SSO, users can use a single set of credentials to access various applications, including Bagisto. This simplifies the management of login credentials for both users and administrators.
-
-2. **Enhanced Security:**
-   - Azure SSO utilizes modern security protocols and provides additional security layers, such as multi-factor authentication (MFA).  
-This strengthens the security of the login process.
-
-3. **User Convenience:**
-   - Users experience improved convenience by only having to log in once to access various applications, including Bagisto.  
-This increases productivity and reduces the risk of password loss or forgetfulness.
-
-4. **Integration with Existing Azure Infrastructure:**
-   - Businesses already using Azure as their cloud infrastructure can benefit from seamless integration with Azure SSO.  
-This helps streamline authentication processes within the existing Azure environment.
-
-5. **Monitoring and Reporting:**
-   - Azure SSO provides comprehensive monitoring and reporting capabilities. Administrators can gain insights into user activity, login attempts, and other relevant data, aiding in security management and issue resolution.
-
-6. **Scalability:**
-   - Azure SSO is designed to be scalable and can be tailored to the growing needs of an organization.  
-Whether you are a small business starting with Bagisto or a larger enterprise requiring scalability, Azure SSO can provide the necessary adjustments.
+- Users can use a single set of credentials to access various applications, including Bagisto.
+- Utilizes modern security protocols and provides additional security layers, such as multi-factor authentication (MFA).
+- Seamless integration with Azure SSO to streamline authentication processes within the existing Azure environment.
+- Azure SSO provides comprehensive monitoring and reporting capabilities.
+- Administrators can gain insights into user activity, login attempts, and other relevant data, aiding in security management and issue resolution.
+- It is designed to be scalable and can be tailored to the growing needs of an organization.
 
 ## Changelog
 

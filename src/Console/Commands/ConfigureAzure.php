@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
-use function Laravel\Prompts\text;
-use function Laravel\Prompts\info;
 use function Laravel\Prompts\confirm;
+use function Laravel\Prompts\info;
+use function Laravel\Prompts\warning;
+use function Laravel\Prompts\text;
 
 class ConfigureAzure extends Command
 {
@@ -17,11 +18,24 @@ class ConfigureAzure extends Command
     protected $description = 'Configure Azure environment variables';
 
     public function handle()
-    {
+    {        
+        if (!File::exists(base_path('vendor/socialiteproviders/microsoft-azure/Provider.php'))) {
+            warning('Required Socialite Provider (socialiteproviders/microsoft-azure) is missing.');
+            $installProvider = confirm('Install the required provider now? (Press enter to proceed)', true);
+            
+            if ($installProvider) {
+                exec('composer require socialiteproviders/microsoft-azure');
+            } else {
+                return;
+            }
+        }
+
         info('Welcome to the Microsoft Azure SSO configuration wizard');
+        info('Please verify your Azure app registration and redirect URI is set: ' . route('azure.callback'));
 
         if ($this->keysExist()) {
-            $overwrite = confirm('Azure configuration keys already exist. This wizard will overwrite existing settings. Continue?', false);
+            warning('Existing Azure configuration keys found');
+            $overwrite = confirm('Continuing will overwrite current settings. Do you want to proceed?', false);
 
             if (!$overwrite) {
                 return;
@@ -29,7 +43,7 @@ class ConfigureAzure extends Command
         }
 
         $clientId = text(
-            label: 'Please enter your client ID',
+            label: 'Please enter your application (client) ID',
             required: true
         );
 
