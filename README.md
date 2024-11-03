@@ -4,7 +4,7 @@
 </div>
 
 <div align="center">
-    <img alt="GitHub version" src="http://poser.pugx.org/bagisto-eu/azure-auth/v">
+    <img alt="GitHub version" src="https://img.shields.io/github/v/release/bagisto-europe/admin-azure-auth">
     <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/bagisto-eu/azure-auth">
     <img alt="GitHub license" src="https://img.shields.io/github/license/bagisto-europe/admin-azure-auth">
 </div>
