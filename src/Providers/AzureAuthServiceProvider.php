@@ -3,10 +3,7 @@
 namespace Bagisto\AzureAuth\Providers;
 
 use Bagisto\AzureAuth\Console\Commands\ConfigureAzure;
-use Bagisto\AzureAuth\Providers\EventServiceProvider;
-
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Http\Kernel;
 
 class AzureAuthServiceProvider extends ServiceProvider
 {
@@ -20,7 +17,7 @@ class AzureAuthServiceProvider extends ServiceProvider
         $this->app->register(EventServiceProvider::class);
 
         $this->mergeConfigFrom(
-            __DIR__ . '/../Config/services.php',
+            __DIR__.'/../Config/services.php',
             'services'
         );
 
@@ -37,7 +34,7 @@ class AzureAuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
-                
+
         $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'azure-auth');
 
         $this->loadViewsFrom(__DIR__.'/../Resources/views', 'azure-auth');

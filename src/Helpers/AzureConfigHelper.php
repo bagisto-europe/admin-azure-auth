@@ -11,6 +11,6 @@ class AzureConfigHelper
         $redirect = config('services.azure.redirect');
         $tenant = config('services.azure.tenant');
 
-        return !empty($client_id) && !empty($client_secret) && !empty($redirect) && !empty($tenant);
+        return ! empty($client_id) && ! empty($client_secret) && ! empty($redirect) && ! empty($tenant);
     }
 }

@@ -9,35 +9,25 @@ use Illuminate\Support\Str;
 
 use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\info;
-use function Laravel\Prompts\warning;
 use function Laravel\Prompts\text;
+use function Laravel\Prompts\warning;
 
 class ConfigureAzure extends Command
 {
     protected $signature = 'azure:configure';
+
     protected $description = 'Configure Azure environment variables';
 
     public function handle()
-    {        
-        if (!File::exists(base_path('vendor/socialiteproviders/microsoft-azure/Provider.php'))) {
-            warning('Required Socialite Provider (socialiteproviders/microsoft-azure) is missing.');
-            $installProvider = confirm('Install the required provider now? (Press enter to proceed)', true);
-            
-            if ($installProvider) {
-                exec('composer require socialiteproviders/microsoft-azure');
-            } else {
-                return;
-            }
-        }
-
+    {
         info('Welcome to the Microsoft Azure SSO configuration wizard');
-        info('Please verify your Azure app registration and redirect URI is set: ' . route('azure.callback'));
+        warning('Please add the redirect URI inside your Azure app registration: '.route('azure.callback'));
 
         if ($this->keysExist()) {
             warning('Existing Azure configuration keys found');
             $overwrite = confirm('Continuing will overwrite current settings. Do you want to proceed?', false);
 
-            if (!$overwrite) {
+            if (! $overwrite) {
                 return;
             }
         }
@@ -49,6 +39,13 @@ class ConfigureAzure extends Command
 
         $this->updateEnvFile('AZURE_CLIENT_ID', $clientId);
 
+        $tenantId = text(
+            label: 'Please enter your tenant ID',
+            required: true
+        );
+
+        $this->updateEnvFile('AZURE_TENANT_ID', $tenantId);
+
         $clientSecret = text(
             label: 'Please enter your client Secret',
             required: true
@@ -58,19 +55,12 @@ class ConfigureAzure extends Command
 
         $this->updateEnvFile('AZURE_REDIRECT_URL', route('azure.callback'));
 
-        $tenantId = text(
-            label: 'Please enter your tenant ID',
-            required: true
-        );
-
-        $this->updateEnvFile('AZURE_TENANT_ID', $tenantId);
-
-        Artisan::call('optimize');
-        
         Artisan::call('vendor:publish', [
             '--provider' => "Bagisto\AzureAuth\Providers\AzureAuthServiceProvider",
-            '--force'    => true
+            '--force'    => true,
         ]);
+
+        Artisan::call('optimize');
 
         info('Azure SSO configuration completed successfully.');
     }
@@ -92,7 +82,7 @@ class ConfigureAzure extends Command
             if (Str::contains($envContent, "{$key}=")) {
                 $envContent = preg_replace("/{$key}=.*/", "{$key}=\"{$value}\"", $envContent);
             } else {
-                $envContent .= PHP_EOL . "{$key}=\"{$value}\"";
+                $envContent .= PHP_EOL."{$key}=\"{$value}\"";
             }
 
             File::put($envFilePath, $envContent);
